@@ -3,14 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/release-24.05";
-    gitignore = {
-      url = "github:hercules-ci/gitignore.nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-
-  outputs = { self, nixpkgs, gitignore }: {
+  outputs = { self, nixpkgs }: {
     packages.x86_64-linux.default =
       let
         system = "x86_64-linux";
