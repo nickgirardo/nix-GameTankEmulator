@@ -32,7 +32,7 @@
           "installPhase"
         ];
         
-        buildPhase = "make";
+        buildPhase = "make bin";
         installPhase = ''
           mkdir -p $out/bin
           cp build/GameTankEmulator $out/bin
