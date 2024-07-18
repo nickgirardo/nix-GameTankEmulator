@@ -16,8 +16,8 @@
 
         src = pkgs.fetchgit {
           url = "https://github.com/clydeshaffer/GameTankEmulator.git";
-          rev = "8bedf39b288731e22d6ab6c7866d61b568b0d1b3";
-          sha256 = "sha256-Xz49VlbgBS2oJHtuESOWzofx4MFoaS+P8S5k5e/m0m0=";
+          rev = "a95641a904bb1e8c26c536a1a556b55321253be5";
+          sha256 = "sha256-H7lO23KfbGgmohBobGNbAxFl1L7lA2NEOdGkYtAvPps=";
           fetchSubmodules = true;
         };
 
