@@ -21,7 +21,7 @@
           fetchSubmodules = true;
         };
 
-        nativeBuildInputs = with pkgs; [ git gnumake zip ];
+        nativeBuildInputs = with pkgs; [ gnumake zip ];
         buildInputs = with pkgs; [ SDL2 ];
 
         phases = [
