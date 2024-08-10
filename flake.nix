@@ -76,14 +76,19 @@
             "installPhase"
           ];
 
+          # This value is meant to be overridden with the location to the rom the caller would like to bundle
+          rom = "roms/hello.gtr";
+
           MANUAL_COMMIT_HASH = gte_rev;
           EMCC_LOCAL_PORTS = "sdl2=${SDL2}";
-          ROMFILE_SRC = "roms/hello.gtr";
-          ROMFILE = "roms/hello_world.gtr";
+          ROMFILE = "roms/tmp/rom.gtr";
 
           buildPhase = ''
             mkdir -p $NIX_BUILD_TOP/cache
-            cp $ROMFILE_SRC $ROMFILE
+
+            mkdir -p roms/tmp
+            cp $rom $ROMFILE
+
             EM_CACHE=$NIX_BUILD_TOP/cache OS=wasm make dist
           '';
 
