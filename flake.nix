@@ -20,11 +20,11 @@
     in
     {
       packages = forAllSystems ({ system, pkgs, ... }: let
-        gte_rev = "0e8ec2feac9269ad1ac0df2b347bcb59b7e58b02";
+        gte_rev = "ef75019dc21b5d6556510cf99ea694929d207165";
         src = pkgs.fetchgit {
           url = "https://github.com/clydeshaffer/GameTankEmulator.git";
           rev = gte_rev;
-          sha256 = "sha256-4hEYwrE56OdWjh8rlEzWOUn36gG8kEnR2N1GBoAaKrI=";
+          sha256 = "sha256-LbOa2EeUj63RKRthpgmU6kYx4PkIw1s9D97wiEQUCGg=";
           fetchSubmodules = true;
         };
         SDL2_rev = "release-2.28.4";
