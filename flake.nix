@@ -20,11 +20,11 @@
     in
     {
       packages = forAllSystems ({ system, pkgs, ... }: let
-        gte_rev = "0e8ec2feac9269ad1ac0df2b347bcb59b7e58b02";
+        gte_rev = "6c368f0e553ffbc93b3717cf83c62c68277c15d5";
         src = pkgs.fetchgit {
           url = "https://github.com/clydeshaffer/GameTankEmulator.git";
           rev = gte_rev;
-          sha256 = "sha256-4hEYwrE56OdWjh8rlEzWOUn36gG8kEnR2N1GBoAaKrI=";
+          sha256 = "sha256-IQqntQbS8KC1cwokYHPNmPbTo+B+3jhRK/ghmxiK5tE=";
           fetchSubmodules = true;
         };
         SDL2_rev = "release-2.28.4";
@@ -49,7 +49,7 @@
             "installPhase"
           ];
         
-          buildPhase = "make bin";
+          buildPhase = "gcc -v ; make bin";
           installPhase = ''
             mkdir -p $out/bin
             cp build/GameTankEmulator $out/bin
@@ -76,14 +76,19 @@
             "installPhase"
           ];
 
+          # This value is meant to be overridden with the location to the rom the caller would like to bundle
+          rom = "roms/hello.gtr";
+
           MANUAL_COMMIT_HASH = gte_rev;
           EMCC_LOCAL_PORTS = "sdl2=${SDL2}";
-          ROMFILE_SRC = "roms/hello.gtr";
-          ROMFILE = "roms/hello_world.gtr";
+          ROMFILE = "roms/tmp/rom.gtr";
 
           buildPhase = ''
             mkdir -p $NIX_BUILD_TOP/cache
-            cp $ROMFILE_SRC $ROMFILE
+
+            mkdir -p roms/tmp
+            cp $rom $ROMFILE
+
             EM_CACHE=$NIX_BUILD_TOP/cache OS=wasm make dist
           '';
 
